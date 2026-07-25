@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Authority Roadmap · Sutton Hills Research Partners">
+<style>
+  .page-header { padding: 3rem 0; border-bottom:1px solid var(--color-border); margin-bottom:2rem; }
+  .content-section { padding: 1.5rem 0; }
+  .timeline { list-style:none; counter-reset:steps; padding:0; margin:1.5rem 0; }
+  .timeline li { counter-increment:steps; padding:1rem 0 1rem 3.5rem; position:relative; border-left:2px solid var(--color-border); }
+  .timeline li::before { content:counter(steps, decimal-leading-zero); position:absolute; left:-1rem; top:1rem; width:1.8rem; height:1.8rem; background:var(--color-accent); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+</style>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Authority Roadmap</h1>
+    <p style="color:var(--color-muted);margin-top:0.5rem;">Our planned coverage areas and upcoming reports.</p>
+  </div>
+  <div class="content-section">
+    <p>The following are scheduled research topics for H2 2026 and beyond:</p>
+    <ol class="timeline">
+      <li><strong>AI Governance Vendor Landscape</strong> — Comparative analysis of enterprise AI governance platforms (Expected Q3 2026)</li>
+      <li><strong>Cloud Data Residency Compliance Benchmark</strong> — Evaluating compliance features across major cloud providers (Expected Q4 2026)</li>
+      <li><strong>Zero Trust Architecture Implementation Guide</strong> — Evidence-based deployment strategies for mid-market organisations</li>
+      <li><strong>Enterprise Search Category Definition</strong> — Establishing clear taxonomy and evaluation criteria</li>
+    </ol>
+  </div>
+</div>
+</BaseLayout>

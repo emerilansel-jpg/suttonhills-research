@@ -1,0 +1,53 @@
+---
+const site = 'suttonhillsresearch.com';
+
+async function handleSubmit(e: Event) {
+  e.preventDefault();
+  const form = e.target as HTMLFormElement;
+  const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+  try {
+    await fetch('https://research-api.n311311.workers.dev/api/form/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        site: site,
+        name: 'Newsletter Subscriber',
+        email: emailInput.value,
+        message: 'Subscribe to Research Briefing',
+        website: '',
+      }),
+    });
+    (form.querySelector('.status') as HTMLElement).textContent = 'Thank you — you are now subscribed.';
+    (form.querySelector('.status') as HTMLElement).style.color = 'var(--color-success)';
+    form.reset();
+  } catch {
+    (form.querySelector('.status') as HTMLElement).textContent = 'An error occurred. Please try again later.';
+    (form.querySelector('.status') as HTMLElement).style.color = 'var(--color-danger)';
+  }
+}
+---
+
+<section style="background:var(--color-primary);color:#fff;padding:3rem 2rem;border-radius:var(--radius);text-align:center;">
+  <div style="max-width:500px;margin:0 auto;">
+    <h2 style="font-family:var(--font-heading);color:#fff;font-size:1.6rem;margin-bottom:0.5rem;">Research Briefing</h2>
+    <p style="opacity:0.85;margin-bottom:1.5rem;font-size:0.95rem;">Get our latest research delivered to your inbox monthly. No spam, no vendor ads.</p>
+    <form onSubmit={handleSubmit}>
+      <input type="hidden" name="site" value={site}/>
+      <input type="hidden" name="name" value="Newsletter Subscriber"/>
+      <input type="hidden" name="message" value="Subscribe to Research Briefing"/>
+      <div class="honeypot" style={{`position:absolute;left:-9999px;opacity:0`}}>
+        <label htmlFor="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autoComplete="off"/>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
+        <input type="email" name="email" placeholder="Your email address" required style="flex:1;min-width:220px;padding:0.75rem 1rem;border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);background:rgba(255,255,255,0.1);color:#fff;font-size:1rem;" />
+        <button type="submit" class="btn" style="background:var(--color-accent);">Subscribe</button>
+      </div>
+      <div class="status" style="margin-top:0.75rem;font-size:0.85rem;min-height:1.2em;"></div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .honeypot { display:none; }
+</style>

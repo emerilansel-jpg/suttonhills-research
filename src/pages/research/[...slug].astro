@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('research');
+  return posts.map(post => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title}>
+<style>
+  .article-header { padding: 3rem 0 2rem; border-bottom:1px solid var(--color-border); margin-bottom:2.5rem; }
+  .article-meta { font-size:0.9rem; color:var(--color-accent); margin-bottom:0.75rem; font-weight:600; }
+  .article-body h2 { margin-top:2.5rem; margin-bottom:1rem; }
+  .article-body h3 { margin-top:2rem; margin-bottom:0.75rem; }
+  .article-body p { margin-bottom:1.25rem; }
+  .article-body ul, .article-body ol { margin-bottom:1.25rem; padding-left:1.5rem; }
+  .article-body li { margin-bottom:0.5rem; }
+  .article-body blockquote { border-left:3px solid var(--color-accent); padding-left:1.25rem; color:var(--color-muted); margin:1.5rem 0; }
+  .article-body img { margin:1.5rem 0; border-radius:var(--radius); }
+  .disclosure-box { background:var(--color-bg); border:1px solid var(--color-border); border-radius:var(--radius); padding:1.25rem; margin:2rem 0; font-size:0.9rem; }
+  .disclosure-box strong { color:var(--color-primary); }
+</style>
+
+<article>
+  <div class="container">
+    <div class="article-header">
+      <div class="article-meta">
+        {post.data.outputFormat} · Published {new Date(post.data.publishDate).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+        {post.data.lastReviewed ? ` · Reviewed ${new Date(post.data.lastReviewed).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}` : ''}
+      </div>
+      <h1>{post.data.title}</h1>
+      <p style="color:var(--color-muted); font-size:1.1rem; margin-top:0.5rem;">by {post.data.author}</p>
+      {post.data.reviewer && <p style="font-size:0.9rem; color:var(--color-muted);">Peer reviewed by {post.data.reviewer}</p>}
+    </div>
+
+    <div class="disclosure-box">
+      <strong>Disclosure:</strong> {post.data.disclosure}
+      {post.data.limitations && <><br/><strong>Limitations:</strong> {post.data.limitations}</>}
+    </div>
+
+    <div class="article-body">
+      <Content />
+    </div>
+  </div>
+</article>
+</BaseLayout>

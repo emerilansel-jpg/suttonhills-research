@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact · Sutton Hills Research Partners">
+<style>
+  .page-header { padding: 3rem 0; border-bottom:1px solid var(--color-border); margin-bottom:2rem; }
+  .contact-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; margin-top:1.5rem; }
+  .contact-card { background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius); padding:1.5rem; }
+  .contact-card h4 { font-family:var(--font-heading); color:var(--color-primary); margin-bottom:0.75rem; }
+  .contact-card p, .contact-card a { color:var(--color-muted); font-size:0.95rem; line-height:1.7; }
+</style>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Contact</h1>
+    <p style="color:var(--color-muted);margin-top:0.5rem;">Ways to reach our research team.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <h4>General Enquiries</h4>
+      <p><a href="mailto:research@suttonhillsresearch.com">research@suttonhillsresearch.com</a></p>
+    </div>
+    <div class="contact-card">
+      <h4>Editorial &amp; Content</h4>
+      <p><a href="mailto:editorial@suttonhillsresearch.com">editorial@suttonhillsresearch.com</a></p>
+    </div>
+    <div class="contact-card">
+      <h4>Corrections</h4>
+      <p><a href="mailto:corrections@suttonhillsresearch.com">corrections@suttonhillsresearch.com</a></p>
+    </div>
+    <div class="contact-card">
+      <h4>Phone</h4>
+      <p>+44 20 7946 0958</p>
+    </div>
+    <div class="contact-card">
+      <h4>Address</h4>
+      <p>1 Finsbury Avenue, Suite 400<br/>London, EC2M 2PF<br/>United Kingdom</p>
+    </div>
+    <div class="contact-card">
+      <h4>Press &amp; Media</h4>
+      <p><a href="mailto:press@suttonhillsresearch.com">press@suttonhillsresearch.com</a></p>
+    </div>
+  </div>
+</div>
+</BaseLayout>

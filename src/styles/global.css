@@ -1,0 +1,80 @@
+:root {
+  --color-primary: #5B2432;   /* Deep burgundy — English country house */
+  --color-accent: #C8963A;    /* Gold leaf */
+  --color-bg: #FDFCF8;        /* Warm ivory */
+  --color-text: #1A1A2E;      /* Near-black */
+  --color-surface: #FFFFFF;
+  --color-muted: #6B7280;
+  --color-border: #E5DDD5;
+  --color-success: #047857;
+  --color-warning: #B45309;
+  --color-danger: #DC2626;
+
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --max-width: 1200px;
+  --radius: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2.25rem); }
+h3 { font-size: clamp(1.15rem, 2.5vw, 1.4rem); }
+
+a { color: var(--color-accent); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.85; text-decoration: underline; }
+
+p { margin-bottom: 1rem; }
+
+img { max-width: 100%; height: auto; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section { padding: 4.5rem 0; }
+
+.btn {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover { opacity: 0.9; text-decoration: none; }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  body { font-size: 1rem; }
+}

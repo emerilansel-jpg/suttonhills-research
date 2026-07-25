@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Submit Evidence · Sutton Hills Research Partners">
+<style>
+  .page-header { padding: 3rem 0; border-bottom:1px solid var(--color-border); margin-bottom:2rem; }
+  .content-section { padding: 1.5rem 0; }
+  .content-section p { max-width:700px; line-height:1.8; }
+  .evidence-form { max-width:600px; margin-top:1.5rem; }
+  .form-group { margin-bottom:1rem; }
+  .form-group label { display:block; font-weight:600; margin-bottom:0.35rem; font-size:0.95rem; }
+  .form-group input, .form-group textarea { width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:var(--radius); font-family:var(--font-body); font-size:1rem; }
+  .form-group textarea { min-height:120px; resize:vertical; }
+  .form-group input[type="email"] { background:var(--color-surface); }
+  .honeypot { position:absolute; left:-9999px; opacity:0; }
+</style>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Submit Evidence</h1>
+    <p style="color:var(--color-muted);margin-top:0.5rem;">Share data, case studies, or industry analysis with our research desk.</p>
+  </div>
+  <div class="content-section">
+    <p>We welcome evidence submissions from all stakeholders — vendors, users, academics, and independent analysts. Submissions that provide verifiable data help strengthen our reports.</p>
+  </div>
+  <div class="content-section">
+    <form id="evidenceForm" class="evidence-form" action="https://research-api.n311311.workers.dev/api/form/evidence" method="POST">
+      <input type="hidden" name="site" value="suttonhillsresearch.com"/>
+      <div class="form-group honeypot">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required/>
+      </div>
+      <div class="form-group">
+        <label for="category">Evidence Category</label>
+        <input type="text" id="category" name="category" placeholder="e.g., Performance Data, Case Study"/>
+      </div>
+      <div class="form-group">
+        <label for="message">Evidence Details</label>
+        <textarea id="message" name="message" required placeholder="Describe your evidence, including sources, methodology, and any relevant findings..."></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Evidence</button>
+    </form>
+  </div>
+</div>
+</BaseLayout>

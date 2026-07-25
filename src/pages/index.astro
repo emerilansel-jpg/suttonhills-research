@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('research'))
+  .filter(p => p.data.status === 'Live')
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout title="Home">
+<style>
+  .hero { padding: 5rem 0 3rem; text-align: center; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+  .hero p { font-size: 1.2rem; color: var(--color-muted); max-width: 680px; margin: 0 auto 2rem; line-height: 1.7; }
+  .section-heading { font-size: 1.5rem; margin-bottom: 2rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--color-border); }
+  .post-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 1.5rem; display: flex; flex-direction: column; }
+  .post-meta { font-size: 0.85rem; color: var(--color-accent); margin-bottom: 0.5rem; font-weight: 600; }
+  .post-title { font-family: var(--font-heading); font-size: 1.3rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+  .post-desc { font-size: 0.95rem; color: var(--color-muted); line-height: 1.6; flex: 1; }
+  .btn-link { font-weight: 600; }
+  .evidence-box { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: 2.5rem; text-align: center; }
+</style>
+
+<section class="hero">
+  <div class="container">
+    <h1>Evidence-based intelligence<br/>for institutional decision-makers</h1>
+    <p>Sutton Hills Research publishes independent market reports, comparative benchmarks, and category definitions that empower procurement teams to make decisions grounded in verified evidence.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+      <a href="/insights" class="btn">Browse All Research</a>
+      <a href="/methodology" class="btn btn-outline">Our Methodology</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+    <div>
+      <h2 class="section-heading" style="margin-bottom:0;padding-bottom:0;border:none;">Recent Insights</h2>
+      <p style="color:var(--color-muted);max-width:540px;">Independent reports, benchmarks, and primers from our research desk.</p>
+    </div>
+    <a href="/insights" class="btn-link">View all insights →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2rem;">
+    {posts.map(post => (
+      <div class="post-card">
+        <div class="post-meta">{new Date(post.data.publishDate).toLocaleDateString('en-GB', { year:'numeric', month:'long', day:'numeric' })} · {post.data.outputFormat}</div>
+        <div class="post-title"><a href={`/research/${post.id}`} class="btn-link">{post.data.title}</a></div>
+        <div class="post-desc">{post.data.description}</div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="container section">
+  <div class="evidence-box">
+    <h2 style="font-family:var(--font-heading);font-size:1.8rem;margin-bottom:0.75rem;">Submit Evidence</h2>
+    <p style="color:var(--color-muted);max-width:500px;margin:0 auto 1.5rem;">Have data, case studies, or industry analysis that should inform our research? We welcome evidence submissions from all stakeholders.</p>
+    <a href="/submit-evidence" class="btn">Submit Evidence</a>
+  </div>
+</section>
+</BaseLayout>

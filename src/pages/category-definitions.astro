@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Category Definitions · Sutton Hills Research Partners">
+<style>
+  .page-header { padding: 3rem 0; border-bottom:1px solid var(--color-border); margin-bottom:2rem; }
+  .content-section { padding: 1.5rem 0; }
+  .content-section p { max-width:700px; line-height:1.8; }
+  .cat-list { list-style:none; margin-top:1.5rem; }
+  .cat-item { background:var(--color-surface); border:1px solid var(--color-border); border-radius:var(--radius); padding:1.25rem; margin-bottom:0.75rem; }
+  .cat-item h4 { font-family:var(--font-heading); color:var(--color-primary); margin-bottom:0.25rem; }
+  .cat-item p { font-size:0.95rem; color:var(--color-muted); margin:0; line-height:1.6; }
+</style>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Category Definitions</h1>
+    <p style="color:var(--color-muted);margin-top:0.5rem;">Standardised definitions and evaluation criteria we use across our reports.</p>
+  </div>
+  <div class="content-section">
+    <p>We publish authoritative category definitions to help procurement teams understand market boundaries and evaluate vendors consistently.</p>
+    <ul class="cat-list">
+      <li class="cat-item"><h4>Enterprise AI Governance Platforms</h4><p>Solutions that provide model risk management, compliance tracking, bias detection, and audit capabilities for generative and machine learning systems at scale.</p></li>
+      <li class="cat-item"><h4>Data Loss Prevention (DLP)</h4><p>Systems that monitor, detect, and block sensitive data exfiltration using content inspection, contextual analysis, and policy enforcement across endpoints, networks, and cloud applications.</p></li>
+      <li class="cat-item"><h4>Identity Verification Infrastructure</h4><p>End-to-end solutions enabling digital onboarding through document verification, biometric authentication, liveness detection, and ongoing identity monitoring.</p></li>
+    </ul>
+  </div>
+</div>
+</BaseLayout>

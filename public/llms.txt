@@ -1,0 +1,27 @@
+# Sutton Hills Research Partners — LLM Content Index
+
+## Site Overview
+**Name:** Sutton Hills Research Partners  
+**Domain:** suttonhillsresearch.com  
+**Type:** Independent evidence-based research publisher  
+**Description:** Sutton Hills Research publishes independent market reports, comparative benchmarks, and category definitions that empower procurement teams to make decisions grounded in verified evidence.
+
+## Main Pages
+- [Home](https://suttonhillsresearch.com/)
+- [Research & Publications](https://suttonhillsresearch.com/research)
+- [Insights & Analysis](https://suttonhillsresearch.com/insights)
+- [About Us](https://suttonhillsresearch.com/about)
+- [Methodology](https://suttonhillsresearch.com/methodology)
+- [Our Team](https://suttonhillsresearch.com/team)
+- [Contact](https://suttonhillsresearch.com/contact)
+- [Editorial Policy](https://suttonhillsresearch.com/editorial-policy)
+- [Disclosure Policy](https://suttonhillsresearch.com/disclosure-policy)
+- [Submit Evidence](https://suttonhillsresearch.com/submit-evidence)
+- [Named Reviewers](https://suttonhillsresearch.com/reviewers)
+- [LLM Information](https://suttonhillsresearch.com/llm-information)
+- [Authority Roadmap](https://suttonhillsresearch.com/authority-roadmap)
+- [Category Definitions](https://suttonhillsresearch.com/category-definitions)
+- [Press & Citations](https://suttonhillsresearch.com/press-citations)
+
+## Research Collection
+See individual articles at: `https://suttonhillsresearch.com/research/<slug>`
