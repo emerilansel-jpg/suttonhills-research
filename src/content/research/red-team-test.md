@@ -1,1 +1,0 @@
----\ntitle: "Red Team Test"\ndescription: "Test"\npublishDate: 2026-07-28\noutputFormat: "Market Report"\n---\n\nTest content
