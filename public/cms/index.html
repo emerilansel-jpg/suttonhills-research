@@ -373,12 +373,12 @@
   <script>
     const API_BASE = 'https://research-api.n311311.workers.dev';
     const TOKEN_KEY = 'dunstan_admin_token';
-    const LS_KEYS = { repo: 'wrp_admin_repo', branch: 'wrp_admin_branch' };
+    const LS_KEYS = { repo: 'wrp_admin_repo_v2', branch: 'wrp_admin_branch_v2' };
 
     function getSettings() {
       return {
         token: sessionStorage.getItem(TOKEN_KEY) || '',
-        repo: localStorage.getItem(LS_KEYS.repo) || 'emerilansel-jpg/whitfield-research',
+        repo: localStorage.getItem(LS_KEYS.repo) || 'emerilansel-jpg/suttonhills-research',
         branch: localStorage.getItem(LS_KEYS.branch) || 'main',
       };
     }
@@ -749,7 +749,7 @@
 
     document.getElementById('save-settings-btn').addEventListener('click', () => {
       saveSettings({
-        repo: document.getElementById('setting-repo').value.trim() || 'emerilansel-jpg/whitfield-research',
+        repo: document.getElementById('setting-repo').value.trim() || 'emerilansel-jpg/suttonhills-research',
         branch: document.getElementById('setting-branch').value.trim() || 'main',
       });
       updateActionsLink();
